@@ -66,6 +66,7 @@ class PlayState extends FlxState
 		{
 			tweetsSent = 0;
 			endSegment = true;
+			FlxG.log.add("end segment?");
 		}
 		
 		if (tweetLoading.length > tweetCharPos)
@@ -164,20 +165,12 @@ class PlayState extends FlxState
 		{
 			tweetsSent += 1;
 		
-			if (tweetsSent < Tweets.TweetArray.length - 1)
-			{
-				tweetLoading = Tweets.TweetArray[FlxG.random.int(tweetsSent, Tweets.TweetArray.length -1)];
-				Tweets.TweetArray.remove(tweetLoading);
-			}
-			else
-			{
-				tweetsSent = 0;
-				FlxG.log.add("Finish Game");
-			}
+			tweetLoading = Tweets.TweetArray[FlxG.random.int(0, Tweets.TweetArray.length -1)];
+			Tweets.TweetArray.remove(tweetLoading);
 		}
 		else
 		{		
-			if (tweetsSent <= 11)
+			if (tweetsSent <= Tweets.endTweets.length - 2)
 			{
 				tweetLoading = Tweets.endTweets[tweetsSent];
 			}
