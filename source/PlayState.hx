@@ -5,9 +5,8 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import io.newgrounds.NG;
 
-import com.newgrounds.*;
-import com.newgrounds.components.*;
 
 class PlayState extends FlxState
 {
@@ -54,6 +53,8 @@ class PlayState extends FlxState
 		// get through 80% of the tweets before it transitions into the end?
 		tweetsNeeded = Math.ceil(Tweets.TweetArray.length * 0.80);
 		FlxG.log.add(tweetsNeeded);
+
+		var ng:NGio = new NGio(APIStuff.APIid, APIStuff.ENCkey);
 		
 		super.create();
 	}
@@ -92,8 +93,14 @@ class PlayState extends FlxState
 				if (!startedMusic)
 				{
 					FlxG.sound.playMusic(AssetPaths.LSDAIM__mp3, 0.8);
-					API.unlockMedal("Bounced on my boys dick to this for hours");
-					
+					//NG.unlockMedal("Bounced on my boys dick to this for hours");
+					if (NGio.isLoggedIn)
+					{
+						var hornyMedal = NG.core.medals.get(55014);
+						if (!hornyMedal.unlocked)
+							hornyMedal.sendUnlock();
+					}
+
 					startedMusic = true;
 				}
 				
@@ -151,6 +158,8 @@ class PlayState extends FlxState
 			}
 			
 		});
+
+		curTweet.text = "";
 		
 		grpTweets.add(newTweet);
 		

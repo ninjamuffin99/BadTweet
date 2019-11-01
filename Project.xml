@@ -17,7 +17,7 @@
 	<window width="480" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
-	<window if="html5" resizable="false" />
+	<window if="html5" resizable="true" />
 
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
@@ -34,6 +34,7 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
+	<haxelib name="newgrounds"/>
 
 	<!--In case you want to use the addons package-->
 	<!--<haxelib name="flixel-addons" />-->
@@ -79,6 +80,4 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
-	<haxedef name="as3_native" if="flash"/>
-	<haxeflag name="-swf-lib" value="NewgroundsAPI.swc" if="flash"/>
 </project>

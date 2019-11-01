@@ -11,14 +11,5 @@ class Main extends Sprite
 	{
 		super();
 		addChild(new FlxGame(0, 0, PlayState));
-		
-		API.connect(root, APIStuff.APIid, APIStuff.ENCkey);
-		
-		var medal:MedalPopup = new MedalPopup();
-		medal.x = (stage.width / 2) - (medal.width / 2);
-		medal.y = 200;
-		//addChild(medal);
-		
-		
 	}
 }

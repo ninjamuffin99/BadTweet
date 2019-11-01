@@ -3,9 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxText;
-
-import com.newgrounds.*;
-import com.newgrounds.components.*;
+import io.newgrounds.NG;
 
 /**
  * ...
@@ -29,7 +27,12 @@ class CreditsState extends FlxState
 	
 	override public function create():Void 
 	{
-		API.unlockMedal("E-Famous");
+		if (NGio.isLoggedIn)
+		{
+			var hornyMedal = NG.core.medals.get(55015);
+			if (!hornyMedal.unlocked)
+				hornyMedal.sendUnlock();
+		}
 		
 		FlxG.sound.play("assets/sounds/keyEnter.mp3", 0.7);
 		
